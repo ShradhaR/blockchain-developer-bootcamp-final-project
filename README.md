@@ -1,7 +1,7 @@
 # blockchain-developer-bootcamp-final-project
 <H2>Final Project Description</h2>
-This is Peer-to-Peer tipping DApp that allows user to tip another person using cryptocurrency. Currently this dapp pays tip using ether.
-Few use cases are customer tips waiter or bartender separately than restaurant bill, Github user tip developers who completes task.
+<p>This is Peer-to-Peer tipping DApp that allows user to tip another person using cryptocurrency. Currently this dapp pays tip using ether.
+Few use cases are customer tips waiter or bartender separately than restaurant bill, Github user tip developers who completes task. </p>
 
 <b>Application Workflow</b>
 1. User opens the p2p tipping website application. <br>
@@ -11,7 +11,7 @@ Few use cases are customer tips waiter or bartender separately than restaurant b
 5. When user clicks on "Transfer" button, the Metmask will initiate smart contract to transfer the ether amount. This tip-transfer-transaction will either result in successful transfer or fail due to certain reason.
 
 <b>Future use cases: </b>
-This DAPP can be further extended to be used on most leading web services such as Coinbase, Facebook, Github, Google Plus, Reddit, Slack, StockTwits, Tumblr, Twitter, and YouTube for tipping users. 
+<p>This DAPP can be further extended to be used on most leading web services such as Coinbase, Facebook, Github, Google Plus, Reddit, Slack, StockTwits, Tumblr, Twitter, and YouTube for tipping users. </p>
 
 <b>Project User Interface Link: </b> https://tippingdapp.netlify.app/
 <br><b>Screencast link: </b> https://www.loom.com/share/bb1e78ee44e043ff97bccdfd33ab5c5c
