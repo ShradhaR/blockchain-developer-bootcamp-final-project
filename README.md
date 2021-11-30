@@ -49,3 +49,5 @@ This project can be run locally or on Ropsten testnet. Truffle.config file has b
 <b> 2. Ropster testnet installation details: </b>
 1. If any prerequisite is missing, please refer prerequisite section to install dependencies.
 2. truffle migrate --network ropstern (optional:- Contract is already present on Ropstern testnet.
+
+![image](https://user-images.githubusercontent.com/35179350/144125414-c9b4db16-9bff-4f39-9b7d-4ed277c47a5b.png)
