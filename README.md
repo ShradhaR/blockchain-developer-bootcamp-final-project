@@ -29,7 +29,7 @@ This project can be run locally or on Ropsten testnet. Truffle.config file has b
 <b>Prerequisite: </b>
 1. NVM v0.39.0
 2. NPM v8.1.0
-3. Node v16.13.0
+3. Node LTS v16.13.0 (nvm install --lts)
 5. Truffle (npm install -g truffle)
 6. Ganache (npm install -g ganache-cli)
 8. Live Server Extension (optional)
