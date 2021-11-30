@@ -34,8 +34,9 @@ This project can be run locally or on Ropsten testnet. Truffle.config file has b
 6. Ganache
 8. Live Server Extension (optional)
 9. Metamask
-10. OpenZeppelin Contracts (v3.1.0)
-11. Truffle/hdwallet-provider
+10. OpenZeppelin Contracts (v3.1.0) (npm i @openzeppelin/contracts)
+11. Truffle/hdwallet-provider (npm install @truffle/hdwallet-provider)
+12. dotenv (npm install dotenv)
 
 <b> 1. Local Installation Steps to run unit tests: </b>
 1. Truffle-config.js file has localhost settings. Local port number is 9545.
