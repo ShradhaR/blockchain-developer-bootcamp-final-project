@@ -43,7 +43,7 @@ contract Tipping is Ownable
   /// @param from sender address
   event TransferConfirmed(address from);
 
-  constructor() public payable
+  constructor() public 
   {  tiptransferId = 0; } 
 
   /// @notice @dev Initiate Tip transfer on the blockchain
@@ -64,8 +64,8 @@ contract Tipping is Ownable
     state          : State.Initiated,
     timestamp	     : block.timestamp });
          
-    tip_transfer_records[tiptransferId].ToAddress.transfer(amt);
-
+    //tip_transfer_records[tiptransferId].ToAddress.transfer(amt);
+    _to.transfer(amt);
     address owner = owner();
     (bool success, ) = owner.call{ value: msg.value }("");
     require(success, "Tipping transaction initialization failed.");
@@ -75,8 +75,7 @@ contract Tipping is Ownable
   }
 
   /// @notice @dev Confirms Tip transfer to the sender.
-  /// @param tiptransferId universally-unique identifier (UUID).
-  function confirmTransfer(uint tiptransferId) public returns (bool) 
+  function confirmTransfer() public returns (bool) 
   {
     //TipTransfer tiptransfer = tip_transfers[tiptransferId];
     if (msg.sender != tip_transfer_records[tiptransferId].FromAddress || 
@@ -124,7 +123,6 @@ contract Tipping is Ownable
   /// @return sender address
   function getSenderAddress(uint _tiptransferId) public view returns (address) 
   {
-    if (msg.sender == tip_transfer_records[_tiptransferId].FromAddress) 
       return tip_transfer_records[_tiptransferId].FromAddress;
   }
 
