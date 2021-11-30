@@ -13,7 +13,7 @@ Few use cases are customer tips waiter or bartender seperately, Github user tip 
 <b>Future use cases: </b>
 This DAPP can be used on most leading web services such as Coinbase, Facebook, Github, Google Plus, Reddit, Slack, StockTwits, Tumblr, Twitter, and YouTube for tipping users. 
 
-<b>Project Frontend Link: </b> <<>>
+<b>Project Frontend Link: </b> https://tippingdapp.netlify.app/
 <b> Screenshot link: </b> <<>>
 
 <b>Public Ethereum wallet for certification: </b> 0x8106C7CbD178ac2F716E892D67E9C0b8FD39Da4D
