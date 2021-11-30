@@ -27,8 +27,12 @@ contract Tipping is Ownable
         uint timestamp;
     }
     
+  ///
+
+  uint tiptransferId;
+
   /// @dev The tiptransferId (key) and TipTransfer object (value) are initialized on the mapping (hash table).
-  mapping (bytes32 => TipTransfer) tip_transfers;
+  mapping (uint => TipTransfer) tip_transfer_records;
 
   /// @notice Emitted when a user initate the tip transfer.
   /// @param from sender address
@@ -40,46 +44,47 @@ contract Tipping is Ownable
   event TransferConfirmed(address from);
 
   constructor() public payable
-  {  } 
+  {  tiptransferId = 0; } 
 
   /// @notice @dev Initiate Tip transfer on the blockchain
   /// @param _to receiver's address
   /// @param amt Tip amount to transfer in ether
   function TipTransferInitiated(address payable _to, uint256 amt) public payable 
   onlyOwner 
-  returns(bytes32)
+  returns(uint)
   {
-    bytes32 _tiptransferId = setTipTransferId(msg.sender,_to,amt);
-    TipTransfer storage tiptransfer = tip_transfers[_tiptransferId];
+    //bytes32 _tiptransferId = setTipTransferId(msg.sender,_to,amt);
+    //TipTransfer storage tiptransfer = tip_transfers[_tiptransferId];
 
-    if (tiptransfer.state != State.None) return 0;
-
-    tiptransfer.FromAddress    = payable(msg.sender);
-    tiptransfer.ToAddress      = _to;
-    tiptransfer.amount         = amt;
-    tiptransfer.state          = State.Initiated;
-    tiptransfer.timestamp	     = block.timestamp;
- 
-    tiptransfer.ToAddress.transfer(amt);
+    // if (tiptransfer.state != State.None) return 0;
+    tip_transfer_records[tiptransferId] = TipTransfer({
+    FromAddress    : payable(msg.sender),
+    ToAddress      : _to,
+    amount         : amt,
+    state          : State.Initiated,
+    timestamp	     : block.timestamp });
+         
+    tip_transfer_records[tiptransferId].ToAddress.transfer(amt);
 
     address owner = owner();
     (bool success, ) = owner.call{ value: msg.value }("");
     require(success, "Tipping transaction initialization failed.");
     // Notify the receiver that the transfer is requested
     emit TransferInitiated(msg.sender, _to);
-    return _tiptransferId;
+    return tiptransferId++;
   }
 
   /// @notice @dev Confirms Tip transfer to the sender.
   /// @param tiptransferId universally-unique identifier (UUID).
-  function confirmTransfer(bytes32 tiptransferId) public returns (bool) 
+  function confirmTransfer(uint tiptransferId) public returns (bool) 
   {
-    TipTransfer storage tiptransfer = tip_transfers[tiptransferId];
-    if (msg.sender != tiptransfer.FromAddress || tiptransfer.state != State.Initiated) 
+    //TipTransfer tiptransfer = tip_transfers[tiptransferId];
+    if (msg.sender != tip_transfer_records[tiptransferId].FromAddress || 
+         tip_transfer_records[tiptransferId].state != State.Initiated) 
       return false;
         
-    tiptransfer.state = State.Confirmed;
-    emit TransferConfirmed(tiptransfer.FromAddress);       
+    tip_transfer_records[tiptransferId].state = State.Confirmed;
+    emit TransferConfirmed(tip_transfer_records[tiptransferId].FromAddress);       
     return true;
   }
 
@@ -93,36 +98,49 @@ contract Tipping is Ownable
     revert("receive function");
   }
 
-  /// @notice @dev Set Tip transfer Id as universally-unique identifier (UUID)
-  /// @param _from sender's address
-  /// @param _to receiver's address
-  /// @param _amt Tip amount to transfer
-  function setTipTransferId(address _from,address _to,uint256 _amt) private 
-  onlyOwner
-  returns(bytes32) 
-  {
-    bytes32 tiptransferId = sha256(abi.encodePacked(_from, _to, _amt, block.timestamp));
-    return tiptransferId;
-  }
-
+  
   /// @notice @dev Get the balance of the sender or receiver of this transaction.
-  /// @param tiptransferId universally-unique identifier (UUID)
-  /// @return amt tip amount in ether 
-  function getAmount(bytes32 tiptransferId) public view returns (uint amt) 
+  /// @param _tiptransferId universally-unique identifier (UUID)
+  /// @return amt tip amount
+  function getTipAmount(uint _tiptransferId) public view returns (uint amt) 
   {
-    TipTransfer storage tiptransfer = tip_transfers[tiptransferId];
-    if (msg.sender != tiptransfer.ToAddress && msg.sender != tiptransfer.FromAddress) 
+    //TipTransfer storage tiptransfer = tip_transfers[tiptransferId];
+    if (msg.sender != tip_transfer_records[_tiptransferId].ToAddress && 
+        msg.sender != tip_transfer_records[_tiptransferId].FromAddress) 
       return 0;
-    return tiptransfer.amount;
+    return tip_transfer_records[_tiptransferId].amount;
   }
 
   /// @dev get balance of an account
   /// @param account the account address
-  /// @return balance account balance in ether
+  /// @return balance account balance
   function getBalance(address account) public view returns (uint256 balance) 
   {
-        //return balanceOf(account);
         return account.balance;
   }
 
+  /// @notice @dev Get the sender address.
+  /// @param _tiptransferId unique identifier (UID)
+  /// @return sender address
+  function getSenderAddress(uint _tiptransferId) public view returns (address) 
+  {
+    if (msg.sender == tip_transfer_records[_tiptransferId].FromAddress) 
+      return tip_transfer_records[_tiptransferId].FromAddress;
+  }
+
+  /// @notice @dev Get the receiver address.
+  /// @param _tiptransferId unique identifier (UID)
+  /// @return receiver address
+  function getReceiverAddress(uint _tiptransferId) public view returns (address) 
+  {
+    return tip_transfer_records[_tiptransferId].ToAddress;
+  }
+
+  /// @notice @dev Get the transfer state
+  /// @param _tiptransferId unique identifier (UID)
+  /// @return transfer transcation state 
+  function getState(uint _tiptransferId) public view returns (State) 
+  {
+    return tip_transfer_records[_tiptransferId].state;
+  }
 }
