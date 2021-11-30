@@ -4,10 +4,10 @@ This is Peer-to-Peer tipping DApp that allows user to tip another person using c
 Few use cases are customer tips waiter or bartender separately than restaurant bill, Github user tip developers who completes task.
 
 <h2>Application Workflow</h2>
-1. User opens the p2p tipping website application.
-2. User will initiate connection to Metamask.
-3. After connecting to Metamask, Metamask will read user public key and populate on website "To" field automatically.
-4. User will manually enter "From" field with public key and "Amount" field in ether.
+1. User opens the p2p tipping website application. <br>
+2. User will initiate connection to Metamask. <br>
+3. After connecting to Metamask, Metamask will read user public key and populate on website "To" field automatically. <br>
+4. User will manually enter "From" field with public key and "Amount" field in ether. <br>
 5. When user clicks on "Transfer" button, the Metmask will initiate smart contract to transfer the ether amount. This tip-transfer-transaction will either result in successful transfer or fail due to certain reason.
 
 <b>Future use cases: </b>
