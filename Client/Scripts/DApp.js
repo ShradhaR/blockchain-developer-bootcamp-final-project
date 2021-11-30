@@ -1,5 +1,5 @@
 // 1. Define web3 smart contract parameters.
-const ContractAddress = '0x32F69D3811a7D8f29f7aDb9c71e9c3F8c9fa573c'
+const ContractAddress = '0xc0BDA0Ea2B28186562e76a3eddAf87eb1667e5ce'
 
 const contractABI = [
   {
@@ -299,18 +299,18 @@ btnTransfer.onclick = async () => {
   //const web3= new Web3("http://localhost:9545")
   contractTippingTransfer.setProvider(window.ethereum)
 
-//  await contractTippingTransfer.methods.TipTransferInitiated(ReceiverAddress, weiValue).send(
-//     {from: ethereum.selectedAddress, value:weiValue}
-//     ,
-//     function(err, transactionHash) {
-//       if (err) {
-//             console.log('Payment failed', err);
-//             //$('#status').html('Payment failed');
-//         } else {
-//             console.log("Payment was successful... data returned is: ", transactionHash);
+  await contractTippingTransfer.methods.TipTransferInitiated(ReceiverAddress, weiValue).send(
+    {from: ethereum.selectedAddress, value:weiValue}
+    ,
+    function(err, transactionHash) {
+      if (err) {
+            console.log('Payment failed', err);
+            //$('#status').html('Payment failed');
+        } else {
+            console.log("Payment was successful... data returned is: ", transactionHash);
             
-//        } }
-//     ); 
+       } }
+    ); 
 
 //   const result = await contractTippingTransfer.events.TransferInitiated(ethereum.selectedAddress,ReceiverAddress)
 //   .on('data', (event) => {
@@ -325,19 +325,19 @@ btnTransfer.onclick = async () => {
   let mmtransferstatus = document.getElementById('mm-transferstatus')
   mmtransferstatus.innerHTML = 'Processing....'
 
-  const result1 = await contractTippingTransfer.methods.TipTransferInitiated(ReceiverAddress, weiValue).send(
-        {from: ethereum.selectedAddress, value:weiValue});
-  const result = await contractTippingTransfer.events.TransferInitiated({from:ethereum.selectedAddress,to:ReceiverAddress},
-  function(err,res){
-        if(!err)
-        {
-         //console.log("has this message:"+ res.args._msg);
-        }
-        else
-        {
-         console.log(err);
-        }
-   });
+  // const result1 = await contractTippingTransfer.methods.TipTransferInitiated(ReceiverAddress, weiValue).send(
+  //       {from: ethereum.selectedAddress, value:weiValue});
+  // const result = await contractTippingTransfer.events.TransferInitiated({from:ethereum.selectedAddress,to:ReceiverAddress},
+  // function(err,res){
+  //       if(!err)
+  //       {
+  //        //console.log("has this message:"+ res.args._msg);
+  //       }
+  //       else
+  //       {
+  //        console.log(err);
+  //       }
+  //  });
 
    console.log("method "+result1)
    console.log("event "+result)
@@ -357,6 +357,7 @@ btnTransfer.onclick = async () => {
   mmtransferstatus.innerHTML = "<br> Transaction Status: "+result_flag
   mmtransferstatus.innerHTML += "<br> Post transction balance : "+ senderaddress
 
+ 
 }
 
 

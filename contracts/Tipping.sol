@@ -50,7 +50,6 @@ contract Tipping is Ownable
   /// @param _to receiver's address
   /// @param amt Tip amount to transfer in ether
   function TipTransferInitiated(address payable _to, uint256 amt) public payable 
-  onlyOwner 
   returns(uint)
   {
     //bytes32 _tiptransferId = setTipTransferId(msg.sender,_to,amt);
@@ -65,10 +64,11 @@ contract Tipping is Ownable
     timestamp	     : block.timestamp });
          
     //tip_transfer_records[tiptransferId].ToAddress.transfer(amt);
-    _to.transfer(amt);
-    address owner = owner();
-    (bool success, ) = owner.call{ value: msg.value }("");
-    require(success, "Tipping transaction initialization failed.");
+    address(_to).transfer(amt);
+    //tip_transfer_records.push(tip_transfer_records[tiptransferId]);
+    // address owner = owner();
+    // (bool success, ) = owner.call{ value: msg.value }("");
+    // require(success, "Tipping transaction initialization failed.");
     // Notify the receiver that the transfer is requested
     emit TransferInitiated(msg.sender, _to);
     return tiptransferId++;
