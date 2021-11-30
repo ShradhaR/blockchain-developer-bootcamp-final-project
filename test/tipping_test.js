@@ -43,8 +43,8 @@ describe('Ensure tip amount does not exceed sender balance', function () {
 /// 3. Verify tip amount should not exceed tip limit of 2 ether 
 describe('Ensure tip amount limit is not exceeded', function () {
   it('Should not excced tip amount limit', async function () {
-    const tipAmount = await instance.getTipAmount(TIPTRANSFERID);
-    const tiplimit = 200000000000000000000000;
+    const tipAmount = TIPAMOUNT;
+    const tiplimit = 2;
     let tempvalue;
     if(tipAmount >= tiplimit)
               tempvalue = tipAmount;

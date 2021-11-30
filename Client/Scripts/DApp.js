@@ -115,16 +115,22 @@ const ContractAddress = '0xDf9B3Cd09aFafdafB392d5A0B782409861051500'
         }
       ],
       "name": "TipTransferInitiated",
-      "outputs": [],
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
       "stateMutability": "payable",
       "type": "function"
     },
     {
       "inputs": [
         {
-          "internalType": "bytes32",
-          "name": "transferId",
-          "type": "bytes32"
+          "internalType": "uint256",
+          "name": "tiptransferId",
+          "type": "uint256"
         }
       ],
       "name": "confirmTransfer",
@@ -141,12 +147,12 @@ const ContractAddress = '0xDf9B3Cd09aFafdafB392d5A0B782409861051500'
     {
       "inputs": [
         {
-          "internalType": "bytes32",
-          "name": "transferId",
-          "type": "bytes32"
+          "internalType": "uint256",
+          "name": "_tiptransferId",
+          "type": "uint256"
         }
       ],
-      "name": "getAmount",
+      "name": "getTipAmount",
       "outputs": [
         {
           "internalType": "uint256",
@@ -171,6 +177,63 @@ const ContractAddress = '0xDf9B3Cd09aFafdafB392d5A0B782409861051500'
           "internalType": "uint256",
           "name": "balance",
           "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_tiptransferId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getSenderAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_tiptransferId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getReceiverAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_tiptransferId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getState",
+      "outputs": [
+        {
+          "internalType": "enum Tipping.State",
+          "name": "",
+          "type": "uint8"
         }
       ],
       "stateMutability": "view",
@@ -261,20 +324,20 @@ btnTransfer.onclick = async () => {
     .on('changed', changed => console.log(changed))
     .on('error', err => {throw err})
     .on('connected', str => console.log(str))
+console.log("Transfer iniialization completed!"+result);
+
+await contractTippingTransfer.events.TransferConfirmed(ethereum.selectedAddress)
+  .on('data', (event) => {
+	 contractTippingTransfer.methods.confirmTransfer(result).send();
+    console.log(event);
+  })
+    .on('data', event => console.log(event))
+    .on('changed', changed => console.log(changed))
+    .on('error', err => {throw err})
+    .on('connected', str => console.log(str))
+    let mmtransferstatus = document.getElementById('mm-transferstatus')
+    mmtransferstatus.innerHTML = 'Tip Transfer is completed successfully.'
 }
 
-// 5. Claim Tips
-// const btnClaimTip = document.getElementById('mm-claim');
-// btnClaimTip.onclick = async () => {
-//   // instantiate smart contract instance
-//   const contractTippingTransfer = new web3.eth.Contract(contractABI, ContractAddress)
-//   //contract.defaultChain = 'goerli'
-//   console.log("Called Tipping contract suc.")
-//   //const web3= new Web3("http://localhost:9545")
-//   contractTippingTransfer.setProvider(window.ethereum)
-//   await contractTippingTransfer.methods.TipReceive().send(
-//      {from: ethereum.selectedAddress, value: '10000000000'});
 
-//   console.log("Called TipTrasfer() method suc ")
-// }
 
