@@ -28,12 +28,14 @@ test: Tests for smart contracts.
 This project cn be run locally or on ropster testnet. Truffle.config file has both configuration specified.
 
 Prerequsitie:-
-1. Truffle
-2. Ganache
-3. Node.js
-4. Live Server Extension
-5. Metamask
-6. 
+1. NPM v0.39.0
+2. NPM v8.1.0
+3. Node v16.13.0
+5. Truffle
+6. Ganache
+8. Live Server Extension
+9. Metamask
+10. 
 
 <b> 1. Local Installation Steps:- </b>
 1. truffle compile
