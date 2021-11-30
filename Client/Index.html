@@ -15,10 +15,15 @@
             <th colspan="2"><u>Transfer Tip</u></th>
        </tr>
        <tr>
-           <td colspan="2" align=center> <div id="mm-detected"></div> </td>
+           <td colspan="2"><p>This DApp will allow user to tip other person using crypotcurruncy. <br>
+                Few Use cases are - customer tipping waiter / bartender seperately, 
+                Github users tipping developers who complete tasks.</p></td>
        </tr>
        <tr>
-           <td colspan="2" align=center> 
+           <td colspan="2"> <div id="mm-detected"></div> </td>
+       </tr>
+       <tr>
+           <td colspan="2"> 
                <Input id="mm-Connect" Type="button" Value="Connect to MetaMask"/> 
             </td>
        </tr>
@@ -36,16 +41,15 @@
            <td ><Input type="text" id="mm-Amt" Length="30" value="0"/> (in Eth) </td>
        </tr>
        <tr>
-        <td colspan="2" align=center><Input type="button" id="mm-transfer" value="Transfer" disabled=true/> </td>
+        <td colspan="2"><Input type="button" id="mm-transfer" value="Transfer" disabled=true/> </td>
+       </tr>
+       <tr>
+           <td colspan="2">
+               <div id="mm-transferstatus"></div>
+           </td>
        </tr>
    </table> 
-    <!-- <hr/>
-   <h4>Claim Tips</h4>
-   <table>
-    <tr>
-        <td align=center><Input type="button" id="mm-claim" value="Claim Tip"/> </td>
-       </tr>
-   </table> -->
+
    <script src="Scripts/DApp.js"></script>
 </body>
 </html>
