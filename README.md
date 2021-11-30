@@ -23,6 +23,23 @@ contracts: Smart contracts that are deployed in the Ropsten testnet.
 migrations: Migration files for deploying contracts in contracts directory.
 test: Tests for smart contracts.
 
-<b>Local Installation Steps</b>
+<b>Installation Steps</b>
+This project cn be run locally or on ropster testnet. Truffle.config file has both configuration specified.
+
+Prerequsitie:-
+1. Truffle
+2. Ganache
+3. Node.js
+4. Live Server Extension
+5. Metamask
+6. 
+
+<b> 1. Local Installation Steps:- </b>
+1. truffle compile
+2. truffle develop
+3. migrate
+4. test
 
 
+<b> 2. Ropster testnet installation Steps</b>
+1. truffle migrate --network ropstern
