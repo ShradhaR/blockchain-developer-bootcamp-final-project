@@ -1,5 +1,5 @@
 // 1. Define web3 smart contract parameters.
-const ContractAddress = '0x7cED9286B6BD2294bBf322A67578598Fb739CF6e'
+const ContractAddress = '0xF9Dd9a7Ee8675a5Aeddb77c282f2dCab43E245A0'
 //#region ContractABI  
 const contractABI =   [
   {

@@ -49,7 +49,7 @@ contract Tipping is Ownable
   /// @param _to receiver's address
   /// @param amt Tip amount to transfer in ether
   function TipTransferInitiated(address payable _to, uint256 amt) public payable 
- /// onlyOwner
+  onlyOwner
   returns(uint)
   {
       
