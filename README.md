@@ -3,7 +3,7 @@
 <p>This is Peer-to-Peer tipping DApp that allows user to tip another person using cryptocurrency. Currently this dapp pays tip using ether.
 Few use cases are customer tips waiter or bartender separately than restaurant bill, Github user tip developers who completes task. </p>
 
-<b>Application Workflow</b>
+<b>Application Workflow:</b>
 1. User opens the p2p tipping website application. <br>
 2. User will initiate connection to Metamask. <br>
 3. After connecting to Metamask, Metamask will read user public key and populate on website "To" field automatically. <br>
