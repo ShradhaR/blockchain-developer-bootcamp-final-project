@@ -12,8 +12,6 @@ Specific compiler pragma '0.8.10' has used in contract to avoid accidental bug i
 
 Tip transfer is protected with OpenZeppelin Ownable's onlyOwner modifier.
 
-## Pull over push
 
-All functions that modify state are based on receiving calls rather than making contract calls.
 
 
