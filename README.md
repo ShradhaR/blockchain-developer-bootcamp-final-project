@@ -24,7 +24,7 @@ migrations: Migration files for deploying contracts in contracts directory.<br>
 test: Unit test cases for smart contracts.
 
 <h2>Installation Details</h2>
-This project can be run locally or on Ropsten testnet. Truffle.config file has both configurations specified. 
+<p>This project can be run locally or on Ropsten testnet. Truffle.config file has both configurations specified. </p>
 
 <b>Prerequisite: </b>
 1. NVM v0.39.0
