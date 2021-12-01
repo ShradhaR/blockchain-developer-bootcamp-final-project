@@ -18,10 +18,10 @@ Few use cases are customer tips waiter or bartender separately than restaurant b
 <br><b>Public Ethereum wallet for certification: </b> 0x8106C7CbD178ac2F716E892D67E9C0b8FD39Da4D
 
 <b>Project Folder Structure: </b>
-Clients: Project's Web3 Javascript frontend. <br>
-contracts: Smart contracts that are deployed in the Ropsten testnet. <br>
-migrations: Migration files for deploying contracts in contracts directory.<br>
-test: Unit test cases for smart contracts.
+* Clients: Project's Web3 Javascript frontend. 
+* contracts: Smart contracts that are deployed in the Ropsten testnet. 
+* migrations: Migration files for deploying contracts in contracts directory.
+* test: Unit test cases for smart contracts.
 
 <h2>Installation Details</h2>
 <p>This project can be run locally or on Ropsten testnet. Truffle.config file has both configurations specified. </p>
